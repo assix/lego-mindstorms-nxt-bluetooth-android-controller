@@ -1,9 +1,8 @@
 # NXT Drive
 
-**Drive a LEGO MINDSTORMS NXT (2006) from an Android phone, over Bluetooth —
-no legacy LEGO software anywhere in the loop.**
+**Drive a LEGO MINDSTORMS NXT (2006) from an Android phone, over Bluetooth.**
 
-A second-hand NXT brick, a modern Android phone, and two small pieces of
+A Lego NXT brick, a modern Android phone, and two small pieces of
 code written for this project:
 
 - **`app/`** — *NXT Drive*, a one-screen Android remote-control app
@@ -11,7 +10,7 @@ code written for this project:
 - **`brick/`** — *bt_drive*, an NXC program that runs on the brick's stock
   firmware and interprets one-letter commands arriving in mailbox 1.
 
-Verified end-to-end on real hardware: a Samsung Galaxy S24 Ultra driving
+Verified end-to-end on real hardware: a Samsung Galaxy phone driving
 an NXT brick (stock firmware 1.28) around the floor.
 
 <p align="center">
