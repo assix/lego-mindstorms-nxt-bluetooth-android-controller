@@ -14,6 +14,12 @@ code written for this project:
 Verified end-to-end on real hardware: a Samsung Galaxy S24 Ultra driving
 an NXT brick (stock firmware 1.28) around the floor.
 
+<p align="center">
+  <img src="docs/images/nxt-robot.png" alt="LEGO Mindstorms NXT robot" width="62%">
+  <img src="docs/images/app-screenshot.jpg" alt="NXT Drive app, connected to the brick" width="30%">
+</p>
+<p align="center"><em>The robot, and the app that drives it — connected and ready.</em></p>
+
 ## How it works
 
 ```
@@ -104,7 +110,8 @@ nbc brick/bt_drive.nxc -O=brick/bt_drive.rxe
 ```
 app/     Android app: MainActivity.java, layout, manifest, build.sh
 brick/   bt_drive.nxc (source) + bt_drive.rxe (prebuilt) for the NXT
-docs/    driving bt_drive from a generic Bluetooth terminal app
+docs/    driving bt_drive from a generic Bluetooth terminal app,
+         plus images/ (robot picture and app screenshot)
 ```
 
 ## License
