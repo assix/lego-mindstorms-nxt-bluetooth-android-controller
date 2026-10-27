@@ -1,6 +1,6 @@
 # NXT Drive
 
-**Drive a LEGO MINDSTORMS NXT (2006) from an Android phone, over Bluetooth.**
+**Drive a LEGO MINDSTORMS NXT (2006) from an Android phone (2026) over Bluetooth.**
 
 A Lego NXT brick, a modern Android phone, and two small pieces of
 code written for this project:
