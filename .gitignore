@@ -1,0 +1,10 @@
+# build output (build.sh recreates it; the APK is distributed via Releases)
+app/build/
+*.apk
+
+# never commit signing keys
+*.keystore
+*.jks
+
+# OS noise
+.DS_Store

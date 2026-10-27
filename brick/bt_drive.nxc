@@ -1,0 +1,72 @@
+// bt_drive.nxc
+// Phone remote control for the NXT over Bluetooth.
+// Upload bt_drive.rxe to the brick and RUN it, then connect from the
+// phone (Bluetooth Classic / SPP) and send one-letter commands as
+// LEGO MessageWrite telegrams to mailbox 1:
+//
+//   F = forward      B = backward
+//   L = spin left    R = spin right     S = stop
+//
+// Wheels: A = left, B = right (swap LEFT/RIGHT below if your robot
+// turns the wrong way). Commands latch: it keeps driving until you
+// send another command. If the Bluetooth link drops, it stops.
+//
+// Ready-made hex telegrams for the Serial Bluetooth Terminal app
+// (macro buttons, HEX mode, no newline) are in bt_drive_macros.md.
+
+#define LEFT   OUT_A
+#define RIGHT  OUT_B
+#define POWER  75
+
+task main()
+{
+    string cmd;
+
+    ClearScreen();
+    TextOut(0, LCD_LINE1, "BT DRIVE");
+    TextOut(0, LCD_LINE3, "Waiting for");
+    TextOut(0, LCD_LINE4, "phone cmds...");
+
+    while (true)
+    {
+        cmd = "";
+        ReceiveRemoteString(MAILBOX1, true, cmd);
+
+        if (StrLen(cmd) > 0)
+        {
+            ClearLine(LCD_LINE6);
+            TextOut(0, LCD_LINE6, cmd);
+
+            if (cmd == "F" || cmd == "f")
+            {
+                OnFwd(LEFT, POWER);
+                OnFwd(RIGHT, POWER);
+            }
+            else if (cmd == "B" || cmd == "b")
+            {
+                OnRev(LEFT, POWER);
+                OnRev(RIGHT, POWER);
+            }
+            else if (cmd == "L" || cmd == "l")
+            {
+                OnRev(LEFT, POWER);    // left wheel back
+                OnFwd(RIGHT, POWER);   // right wheel forward = spin left
+            }
+            else if (cmd == "R" || cmd == "r")
+            {
+                OnFwd(LEFT, POWER);
+                OnRev(RIGHT, POWER);
+            }
+            else if (cmd == "S" || cmd == "s")
+            {
+                Off(OUT_AB);
+            }
+        }
+
+        // Failsafe: phone gone = stop.
+        if (BluetoothStatus(0) != NO_ERR)
+            Off(OUT_AB);
+
+        Wait(50);
+    }
+}
